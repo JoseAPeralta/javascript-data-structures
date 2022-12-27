@@ -36,22 +36,24 @@ class MySinglyLinkedList {
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
-    return this;
+    return this.length;
   }
 
-  preAppend(value) {
+  prepend(value) {
     const newNode = new Node(value);
-    this.head.value = { ...newNode };
+    newNode.next = this.head;
+    this.head = newNode;
     this.length++;
     return this.length;
   }
 }
+
 let myLinkedList = new MySinglyLinkedList(1);
 
 console.log(myLinkedList.append(2));
 console.log(myLinkedList.append(3));
 console.log(myLinkedList.append(4));
 
-// console.log(myLinkedList.preAppend(5));
+console.log(myLinkedList.prepend(10));
 
 console.log(myLinkedList);
