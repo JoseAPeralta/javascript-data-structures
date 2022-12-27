@@ -50,6 +50,7 @@ class MySinglyLinkedList {
   getIndex(index) {
     let counter = 0;
     let currentNode = this.head;
+
     while (counter !== index) {
       currentNode = currentNode.next;
       counter++;
@@ -67,6 +68,24 @@ class MySinglyLinkedList {
     firstPointer.next = newNode;
     newNode.next = holdingPointer;
   }
+
+  remove(index) {
+    if (!this.getIndex(index)) {
+      console.log("Este nodo no existe.");
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+      this.length--;
+      return this;
+    }
+
+    let previousPoiner = this.getIndex(index - 1);
+    let nextPointer = this.getIndex(index + 1);
+    previousPoiner.next = nextPointer;
+    this.length--;
+    return this;
+  }
 }
 
 let myLinkedList = new MySinglyLinkedList(1);
@@ -80,3 +99,5 @@ console.log(myLinkedList.prepend(10));
 console.log(myLinkedList.insert(1, 15));
 
 console.log(myLinkedList);
+
+console.log(myLinkedList.remove(0));
