@@ -29,11 +29,24 @@ class Stack {
 
     this.length++;
   }
+
+  pop() {
+    const holdingPointer = this.top.next;
+
+    this.top = holdingPointer;
+    this.length--;
+    return this;
+  }
 }
 
 const myStack = new Stack();
 
 myStack.push(10);
 myStack.push(15);
+myStack.push(25);
+myStack.push(35);
 
-console.log(myStack);
+console.log(myStack.peek());
+
+myStack.pop();
+console.log(myStack.peek());
